@@ -12,7 +12,7 @@ import {
 import { FormattedMessage, useIntl, useRequest, history } from '@umijs/max';
 import { Button, Drawer, message, Popconfirm } from 'antd';
 import React, { useRef, useState } from 'react';
-import { getArticleList, delArticle } from '@/services/ant-design-pro/articles';
+import { getArticleList, delArticle, delBatchArticle } from '@/services/ant-design-pro/articles';
 
 // 定义文章数据类型
 interface ArticleItem {
@@ -58,7 +58,8 @@ const ArticleList: React.FC = () => {
 
   // 批量删除文章
   const batchDeleteArticles = async (ids: number[]) => {
-    // 模拟API调用
+    // API调用
+    await delBatchArticle(ids)
     return { success: true };
   };
 
@@ -166,7 +167,7 @@ const ArticleList: React.FC = () => {
     },
     {
       title: '下载积分',
-      dataIndex: 'pointThreshold',
+      dataIndex: 'downloadPointThreshold',
       hideInSearch: true,
     },
     {

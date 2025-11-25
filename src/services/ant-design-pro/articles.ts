@@ -34,7 +34,7 @@ export async function getArticle(id: String) {
   });
 }
 
-/** 编辑文章接口 POST /api/articles/:id */
+/** 编辑文章接口 PUT /api/articles/:id */
 export async function editeArticles(id: String, body: API.ArticleParams, options?: { [key: string]: any }) {
   return request<Record<string, any>>(`/api/articles/${id}`, {
     method: 'PUT',
@@ -46,12 +46,25 @@ export async function editeArticles(id: String, body: API.ArticleParams, options
   });
 }
 
-/** 根据ID删除文章接口 GET /api/articles/:id */
+/** 根据ID删除文章接口 DELETE /api/articles/:id */
 export async function delArticle(id: number) {
   return request<Record<string, any>>(`/api/articles/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
+    },
+  });
+}
+
+/** 根据批量删除文章接口 DELETE /api/articles */
+export async function delBatchArticle(ids: number[]) {
+  return request<Record<string, any>>(`/api/articles`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      ids,
     },
   });
 }

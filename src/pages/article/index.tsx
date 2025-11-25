@@ -101,7 +101,7 @@ const RichTextForm: React.FC = () => {
         visibility: values.visibility,
         isFeatured: values.isFeatured,
         resourceUrl: values.resourceUrl,
-        downloadPointThreshold: 0,
+        downloadPointThreshold: values.downloadPointThreshold,
       }
 
       if(isEdit) {
@@ -151,7 +151,7 @@ const RichTextForm: React.FC = () => {
         wrapperCol={{ span: 20 }}
         onFinish={onFinish}
         validateMessages={validateMessages}
-        initialValues={{ status: 'draft', visibility: '1', isFeatured: 0, downloadPointThreshold: 0 }}
+        initialValues={{ status: 'draft', visibility: 'public', isFeatured: 0, downloadPointThreshold: 0 }}
       >
         <Form.Item name="title" label="文章标题" rules={[{ required: true }]}>
           <Input placeholder="请输入文章标题" />
