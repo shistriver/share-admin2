@@ -113,7 +113,9 @@ const RichTextForm: React.FC = () => {
       }
       
     } catch (error) {
-      message.error('请完善表单内容后再提交');
+      if(error && error?.outOfDate === false) {
+        message.error('请完善表单内容后再提交');
+      }
       setLoading(false);
     }
   };
