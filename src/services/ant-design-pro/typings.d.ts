@@ -106,4 +106,31 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+
+  type ArticleListItem = {
+    id: number;
+    title: string;
+    subtitle: string;
+    summary: string;
+    status: string;
+    visibility: string;
+    isFeatured: number;
+    pointThreshold: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+
+  type ArticleParams = {
+    title: string;
+    subtitle: string;
+    coverImageUrl: string;
+    content: string;
+    summary: string;
+    authorId: number;
+    status: string;
+    visibility: string;
+    isFeatured: boolean;
+    resourceUrl: string;
+    downloadPointThreshold: number;
+  };
 }

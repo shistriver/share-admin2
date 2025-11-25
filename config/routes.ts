@@ -1,4 +1,4 @@
-﻿/**
+﻿﻿﻿/**
  * @name umi 的路由配置
  * @description 只支持 path,component,routes,redirect,wrappers,name,icon 的配置
  * @param path  path 只支持两种占位符配置，第一种是动态参数 :id 的形式，第二种是 * 通配符，通配符只能出现路由字符串的最后。
@@ -52,10 +52,32 @@ export default [
     component: './table-list',
   },
   {
-    name: 'list.article-list',
+    name: 'list.articles',
     icon: 'readOutlined',
     path: '/article',
-    component: './article',
+    routes: [
+      {
+        path: '/article',
+        redirect: '/article/list',
+      },
+      {
+        path: '/article/list',
+        name: 'list',
+        component: './article/list',
+      },
+      {
+        path: '/article/edit/:id',
+        name: 'edit',
+        hideInMenu: true,
+        component: './article',
+      },
+      {
+        path: '/article/create',
+        name: 'create',
+        hideInMenu: true,
+        component: './article',
+      },
+    ],
   },
   {
     name: 'list.category-list',
